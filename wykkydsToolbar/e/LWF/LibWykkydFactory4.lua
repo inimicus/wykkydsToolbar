@@ -68,7 +68,6 @@ lwf4.MAJOR = string.format("%s-%d",lwf4.name,lwf4._v.major)
 lwf4.MINOR = tonumber(string.format("2014%02d%02d%03d", lwf4._v.monthly, lwf4._v.daily, lwf4._v.minor))
 lwf4.__index = lwf4
 
-if LibStub then lwf4.libStub, lwf4.oldminor = LibStub:NewLibrary(lwf4.MAJOR, lwf4.MINOR) end
 if LWF4_DEFAULT_CHAT_COLOR == nil then LWF4_DEFAULT_CHAT_COLOR = "|cBDBDBD" end
 
 lwf4.__internalize = function()
@@ -1407,7 +1406,7 @@ lwf4.__hydrate = function()
 		return iter
 	end
 
-	LWF4.LAM = LibStub("LibAddonMenu-2.0")
+	LWF4.LAM = LibAddonMenu2
 
 	LWF4.data.ChatChannels = {
 		p = { channel = CHAT_CHANNEL_PARTY, channelDescr = "CHAT_CHANNEL_PARTY" },
@@ -7288,23 +7287,5 @@ local startup = function()
 	end)
 end
 
-if lwf4.libStub then
-	if not LWF4 then
-		LWF4 = lwf4; startup()
-	else
-		if LWF4._v.major < lwf4._v.major
-		or (
-			LWF4._v.monthly < lwf4._v.monthly
-			or ( LWF4._v.monthly == lwf4._v.monthly and LWF4._v.daily <= lwf4._v.daily )
-			or ( LWF4._v.monthly == lwf4._v.monthly and LWF4._v.daily == lwf4._v.daily and LWF4._v.minor < lwf4._v.minor )
-		) then
-			LWF4._v = lwf4._v
-			LWF4.__internal = lwf4.__internal
-			LWF4.__extension = lwf4.__extension
-			LWF4.data = lwf4.data
-			LWF4.UI = lwf4.UI
-			LWF4.REGISTER_FACTORY = lwf4.REGISTER_FACTORY
-			startup()
-		end
-	end
-end
+LWF4 = lwf4; startup()
+LibWykkydFactory = LWF4

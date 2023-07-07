@@ -349,7 +349,7 @@ _addon.Initialize = function( self )
 end
 
 if wykkydsToolbarGlobal == nil then wykkydsToolbarGlobal = {} end
-LWF4.REGISTER_FACTORY(
+LibWykkydFactory.REGISTER_FACTORY(
 	_addon, false, true,
 	function( self ) _addon:LoadSavedVariables( self ) end,
 	function( self ) _addon:LoadSettingsMenu( self ) end,
