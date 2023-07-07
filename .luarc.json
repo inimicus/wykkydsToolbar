@@ -5,8 +5,10 @@
         "../eso-api-lua-intellij-baertram_API101038"
     ],
     "diagnostics.globals": [
+        "GetWindowManager",
         "GuiRoot",
         "LibAddonMenu2",
+        "SLASH_COMMANDS",
         "wykkydsToolbar"
     ]
 }
