@@ -10,7 +10,7 @@ _addon.Feature.Toolbar.GetBackpackDetails = function()
 	local bagIcon = "/esoui/art/tooltips/icon_bag.dds"
 	local toolType = _addon.G.BAR_TOOL_BACKPACK
 	--local bagIcon = "/esoui/art/mainmenu/menubar_inventory_up.dds"
-	
+
 	return _addon.Feature.Toolbar.GetBagDetails(bagId, bagSetting, useIcon, useTitle, bagLow, bagMid, bagIcon, toolType)
 end
 
@@ -30,22 +30,22 @@ end
 _addon.Feature.Toolbar.GetBagDetails = function(bagId, bagSetting, useIcon, useTitle, bagLow, bagMid, bagIcon, toolType)
 	local useWhiteText = _addon:GetOrDefault( false, _addon.Settings["white_text"] )
 	local toolScale = _addon:GetOrDefault( 100, _addon.Settings["scale"]) / 100
-	
+
 	local c = {}
-	
+
 	local bagSize, bagUsed, bagFree = GetBagSize(bagId), GetNumBagUsedSlots(bagId), GetNumBagFreeSlots(bagId)
 	if bagId == BAG_BANK and  IsESOPlusSubscriber() then
 		local bagSubSize, bagSubUsed, bagSubFree = GetBagSize(BAG_SUBSCRIBER_BANK), GetNumBagUsedSlots(BAG_SUBSCRIBER_BANK), GetNumBagFreeSlots(BAG_SUBSCRIBER_BANK)
 		bagSize, bagUsed, bagFree = bagSize + bagSubSize, bagUsed + bagSubUsed, bagFree + bagSubFree
 	end
-	
+
 	c = {0,1,0,1}
 	if tonumber(bagFree) <= bagMid then c = {1,1,0,1} end
 	if tonumber(bagFree) <= bagLow then c = {1,0,0,1} end
-	
+
 	local retVal = ""
-	
-	if useTitle then 
+
+	if useTitle then
 		retVal = retVal .. _addon._DefaultLabelColor
 		if bagSetting == "Used / Total" then retVal = retVal .. "Bags:|r " .. bagUsed .. "|cDFDDDE".." / " .. bagSize.."|r" end
 		if bagSetting == "Used Space" then retVal = retVal .. "Used Space:|r " .. bagUsed end
@@ -63,10 +63,10 @@ _addon.Feature.Toolbar.GetBagDetails = function(bagId, bagSetting, useIcon, useT
 			--if o.Icon == nil then o.Icon = _addon.Feature.Toolbar.MakeSpacerControl( o ); o.Icon:SetTexture( "/esoui/art/mainmenu/menubar_inventory_up.dds" ) end
 			local o = wykkydsToolbar.Tools[toolType].Control
 			if o.Icon == nil then o.Icon = _addon.Feature.Toolbar.MakeSpacerControl( o ); o.Icon:SetTexture( bagIcon ) end
-						
+
 			--o.IconSize = 24
 			o.IconSize = 16
-			
+
 			o.BufferSize = 20 * toolScale
 			if not o.UseIcon then
 				o.Icon:SetDimensions( o.IconSize, o.IconSize )
@@ -96,7 +96,7 @@ _addon.Feature.Toolbar.GetBagDetails = function(bagId, bagSetting, useIcon, useT
 			o.UseIcon = false
 		end
 	end
-	
+
 	if useWhiteText then c = {1,1,1,1}; end
 
 	return retVal, c

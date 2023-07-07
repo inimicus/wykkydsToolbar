@@ -35,12 +35,12 @@ end
 _addon.Feature.Toolbar.GetUnit_Level = function()
     local useTitle, title = _addon:GetOrDefault( false, _addon.Settings["level_title"]), _addon._DefaultLabelColor .. "Level:|r "
     local useWhiteText = _addon:GetOrDefault( false, _addon.Settings["white_text"] )
-    
+
     if not useTitle then title = "" end
     local lvl, c
-    
+
 		if useWhiteText then cpColor = "FFFFFF" end
-		
+
     if IsUnitChampion('player') then
         lvl = "|c"..cpColor.."cp|r" .. GetPlayerChampionPointsEarned()
         c = {1,1,.76,.85}
@@ -48,8 +48,8 @@ _addon.Feature.Toolbar.GetUnit_Level = function()
         lvl = GetUnitLevel("player")
         c = levelColor
     end
-    
+
     if useWhiteText then c = {1,1,1,1}; end
-    
+
     return title..lvl, c
 end

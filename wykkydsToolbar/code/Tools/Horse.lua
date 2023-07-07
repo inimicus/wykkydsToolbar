@@ -6,7 +6,7 @@ _addon.Feature.Toolbar.GetHorse = function()
 	local useWhiteText = _addon:GetOrDefault( false, _addon.Settings["white_text"] )
 	local toolScale = _addon:GetOrDefault( 100, _addon.Settings["scale"]) / 100
 	local TimeTilMountFeed, TotalTime = nil, nil
-	
+
 	for ii = 0, 10, 1 do
 		TimeTilMountFeed, TotalTime = GetTimeUntilCanBeTrained(ii)
 		if TimeTilMountFeed ~= nil and TotalTime ~= nil then break end
@@ -84,11 +84,11 @@ _addon.Feature.Toolbar.GetHorse = function()
 	elseif style == "Countdown" then
 		retVal = TimeForHuman
 	end
-	
+
 	if _addon.Feature.Toolbar.horseTrainingComplete() then
 		retVal = _addon.Feature.Toolbar.horseCompleteLabel()
 	end
-    
+
 	if useWhiteText then c = {1,1,1,1}; end
 
 	return retVal, c

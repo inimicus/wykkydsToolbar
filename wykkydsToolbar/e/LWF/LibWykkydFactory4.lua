@@ -137,11 +137,11 @@ lwf4.__internalize = function()
 		local tm = GetTimeString() or ""
 		return dt.." "..tm
 	end
-	LWF4.__internal.GetOrDefault = function(default, value) 
-        if value == nil then return default 
+	LWF4.__internal.GetOrDefault = function(default, value)
+        if value == nil then return default
         else return value end
     end
-	LWF4.__internal.GuildName = function(n) 
+	LWF4.__internal.GuildName = function(n)
         return GetGuildName(GetGuildId(n)) or "<no guild "..tostring(n)..">" end
 	LWF4.__internal.Indent = function( num, msg )
 		local r = ""
@@ -194,7 +194,7 @@ lwf4.__internalize = function()
 		end
 		return iter
 	end
-	LWF4.__internal.Print = function( Text ) 
+	LWF4.__internal.Print = function( Text )
         CHAT_SYSTEM["containers"][1]["currentBuffer"]:AddMessage( LWF4_DEFAULT_CHAT_COLOR..tostring( Text ).."|r" ) end
 	LWF4.__internal.RedGreenPowerMeter = function(val, maxVal, reverseMe)
 		if not LWF4 then return end
@@ -349,7 +349,7 @@ lwf4.__extend = function()
         if not LWF4 then return end; return LWF4.__internal.GetOrDefault(...) end
 	LWF4.__extension.GuildName = function( self,... )
         if not LWF4 then return end; LWF4.__internal.GuildName(...) end
-	LWF4.__extension.Indent = function( self, ... 
+	LWF4.__extension.Indent = function( self, ...
         ) if not LWF4 then return end; return LWF4.__internal.Indent( ... ) end
 	LWF4.__extension.InjectAdvancedSettings = function( self, optionsTable, afterOption )
 		local optionsCount, opts, key = self:GetCountOf( optionsTable ), {}, afterOption+1
@@ -1482,7 +1482,6 @@ lwf4.__hydrate = function()
         ["EQUIP_SLOT_SHOULDERS"] 	    = EQUIP_SLOT_SHOULDERS,
 		["EQUIP_SLOT_WAIST"] 		    = EQUIP_SLOT_WAIST,
 		["EQUIP_SLOT_WRIST"] 		    = EQUIP_SLOT_WRIST,
-		
 	}
 	LWF4.data.EquipSlotBagSlot = {
 		["EQUIP_SLOT_BACKUP_MAIN"] 	    = 20,
@@ -1492,22 +1491,21 @@ lwf4.__hydrate = function()
         ["EQUIP_SLOT_CLASS1"] 		    = 17,
         ["EQUIP_SLOT_CLASS2"] 		    = 18,
         ["EQUIP_SLOT_CLASS3"] 		    = 19,
-        ["EQUIP_SLOT_COSTUME"]          = 10,        
+        ["EQUIP_SLOT_COSTUME"]          = 10,
 		["EQUIP_SLOT_FEET"] 		    = 9,
 		["EQUIP_SLOT_HAND"] 		    = 16,
 		["EQUIP_SLOT_HEAD"] 		    = 0,
-		["EQUIP_SLOT_LEGS"] 		    = 8,		
+		["EQUIP_SLOT_LEGS"] 		    = 8,
 		["EQUIP_SLOT_MAIN_HAND"] 	    = 4,
-		["EQUIP_SLOT_NECK"] 		    = 1,		
+		["EQUIP_SLOT_NECK"] 		    = 1,
 		["EQUIP_SLOT_OFF_HAND"] 	    = 5,
         ["EQUIP_SLOT_POISON"]           = 13,
         ["EQUIP_SLOT_RANGED"]           = 15,
 		["EQUIP_SLOT_RING1"] 		    = 11,
-		["EQUIP_SLOT_RING2"] 		    = 12,		
+		["EQUIP_SLOT_RING2"] 		    = 12,
 		["EQUIP_SLOT_SHOULDERS"] 	    = 3,
 		["EQUIP_SLOT_WAIST"] 		    = 6,
-		["EQUIP_SLOT_WRIST"] 		    = 7,        
-           
+		["EQUIP_SLOT_WRIST"] 		    = 7,
 	}
 	for descr,slot in pairs(LWF4.data.EquipSlotBagSlot) do LWF4.data.EquipSlotDescrByBagSlot[slot] = descr end
 	for descr,slot in pairs(LWF4.data.EquipSlot) do LWF4.data.EquipBagSlot[slot] = LWF4.data.EquipSlotBagSlot[descr] end
@@ -4344,7 +4342,7 @@ lwf4.__hydrate = function()
                 level={ dataType="integer", name="level", paramNum=3 },
                 previousExperience={ dataType="integer", name="previousExperience", paramNum=4 },
                 currentExperience={ dataType="integer", name="currentExperience", paramNum=5 },
-                championPoints={ dataType="integer", name="championPoints", paramNum=6 }, 
+                championPoints={ dataType="integer", name="championPoints", paramNum=6 },
             },
         },
         ["EVENT_EXPERIENCE_UPDATE"] = {
@@ -7100,7 +7098,7 @@ lwf4.__tic = function()
 					t.Registered = true
 				end
 			end
-            
+
 			if LWF4.mem._NumRegisteredToGlobalHandler[e] > 0 then
 				if not LWF4.mem._RegisteredToGlobalHandler[e] then
 					EVENT_MANAGER:RegisterForEvent(

@@ -19,9 +19,9 @@ _addon.Feature.Toolbar.GetWeaponCharge = function()
 	local toolScale = _addon:GetOrDefault( 100, _addon.Settings["scale"]) / 100
 	if useIcon then
 		local o = wykkydsToolbar.Tools[_addon.G.BAR_WEAPONCHARGE].Control
-		if o.Icon == nil then 
-			o.Icon = _addon.Feature.Toolbar.MakeSpacerControl( o ); 
-			o.Icon:SetTexture( ico ) 
+		if o.Icon == nil then
+			o.Icon = _addon.Feature.Toolbar.MakeSpacerControl( o );
+			o.Icon:SetTexture( ico )
 		end
 		o.IconSize = 24
 		o.BufferSize = 22 * toolScale

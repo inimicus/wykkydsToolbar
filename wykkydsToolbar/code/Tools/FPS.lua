@@ -9,9 +9,9 @@ _addon.Feature.Toolbar.GetFramesPerSecond = function()
 	local framerate = GetFramerate()
 	if framerate <= fpsMid and framerate > fpsLow then c = {1,1,0,1}
 	elseif framerate <= fpsLow then c = {1,.5,0,1} end
-    
+
   if useWhiteText then c = {1,1,1,1}; end
-  
+
 	return _addon._DefaultLabelColor .. "FPS:|r "..math.floor(framerate), c
 end
 
@@ -22,11 +22,11 @@ _addon.Feature.Toolbar.GetLatency = function()
   local useWhiteText = _addon:GetOrDefault( false, _addon.Settings["white_text"] )
 	--local c = {215/255,213/255,205/255,1}
 	local c = {.5,1,0,1}   --green
-	local latency = GetLatency()	
+	local latency = GetLatency()
 	if latency < latMid then c = {.5,1,0,1}  --green	
 	elseif latency >= latMid and latency < latHigh then c = {1,1,0,1}  --yellow
 	elseif latency >= latHigh then c = {1,.5,0,1} end   --orange
-    
+
   if useWhiteText then c = {1,1,1,1}; end
 
 	return _addon._DefaultLabelColor .. "PR:|r "..math.floor(latency), c

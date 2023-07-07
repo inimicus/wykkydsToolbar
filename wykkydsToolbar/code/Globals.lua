@@ -23,7 +23,7 @@ _addon.G.BAR_TOOL_CLOTH = 18
 _addon.G.BAR_TOOL_JEWEL = 19
 _addon.G.BAR_DURABILITY = 20
 _addon.G.BAR_WEAPONCHARGE = 21
-_addon.G.BAR_PINGRATE = 22 
+_addon.G.BAR_PINGRATE = 22
 _addon.G.BAR_TOOL_XMUTE = 23
 _addon.G.BAR_TOOL_WRITS = 24
 _addon.G.BAR_TOOL_EVENT_TICKETS = 25
@@ -57,13 +57,13 @@ _addon.TSetting = function( toolID )
 	if toolID == _addon.G.BAR_TOOL_SMITH then return _addon:GetOrDefault( false, _addon.Settings["rt_smithing"] ) end
 	if toolID == _addon.G.BAR_TOOL_WOOD then return _addon:GetOrDefault( false, _addon.Settings["rt_wood"] ) end
 	if toolID == _addon.G.BAR_TOOL_CLOTH then return _addon:GetOrDefault( false, _addon.Settings["rt_clothing"] ) end
-	if toolID == _addon.G.BAR_TOOL_JEWEL then return _addon:GetOrDefault( false, _addon.Settings["rt_jewel"] ) end	
+	if toolID == _addon.G.BAR_TOOL_JEWEL then return _addon:GetOrDefault( false, _addon.Settings["rt_jewel"] ) end
 	if toolID == _addon.G.BAR_TOOL_XMUTE then return _addon:GetOrDefault( true, _addon.Settings["xmute_mode"] ) end
 	if toolID == _addon.G.BAR_TOOL_EVENT_TICKETS then return _addon:GetOrDefault( false, _addon.Settings["eventtickets_mode"] ) end
 	if toolID == _addon.G.BAR_TOOL_BANK then return _addon:GetOrDefault( "Used / Total", _addon.Settings["bank_setting"] ) end
 	if toolID == _addon.G.BAR_TOOL_CROWNS then return _addon:GetOrDefault( "On", _addon.Settings["crowns_mode"] ) end
 	if toolID == _addon.G.BAR_TOOL_CROWN_GEMS then return _addon:GetOrDefault( "On", _addon.Settings["crowngems_mode"] ) end
-	if toolID == _addon.G.BAR_TOOL_TELVAR then return _addon:GetOrDefault( "On", _addon.Settings["telvar_mode"] ) end	
+	if toolID == _addon.G.BAR_TOOL_TELVAR then return _addon:GetOrDefault( "On", _addon.Settings["telvar_mode"] ) end
 end
 
 _addon.G.BAR_STR_SHOW_SMITH             = "Dewi's Smithing Research"

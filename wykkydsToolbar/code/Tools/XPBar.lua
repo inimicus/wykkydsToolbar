@@ -6,7 +6,7 @@ _addon.Feature.Toolbar.GetXPBar = function()
     local xp, xplvl
     if IsUnitChampion('player') then
 		rank = GetPlayerChampionPointsEarned()
-           xp, xplvl = GetPlayerChampionXP(), GetNumChampionXPInChampionPoint(rank)        
+           xp, xplvl = GetPlayerChampionXP(), GetNumChampionXPInChampionPoint(rank)
     else
         xp, xplvl =  GetUnitXP('player'), GetUnitXPMax('player')
     end

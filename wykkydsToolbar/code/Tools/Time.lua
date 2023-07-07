@@ -8,14 +8,14 @@ _addon.Feature.Toolbar.GetTime = function()
 	local retVal, val, c = "", GetTimeString(), {215/255,213/255,205/255,1}
 	local hh, mm, ss = val:match("([^:]+):([^:]+):([^:]+)")
 	local ampm, del = " am", "|cA0A0CF:|r"
-	
-	if useWhiteText then 
+
+	if useWhiteText then
 		ss = "|cFFFFFF"..ss.."|r"
 	else
 		ss = "|cAAAAAA"..ss.."|r"
 	end
-		
-	
+
+
 	if string.lower(timeKind) == "24 hour" then
 		val = hh ..del.. mm ..del.. ss
 		if useTitle then retVal = _addon._DefaultLabelColor .. "Time:|r " .. val
@@ -29,7 +29,7 @@ _addon.Feature.Toolbar.GetTime = function()
 		if useTitle then retVal = _addon._DefaultLabelColor .. "Time:|r " .. val
 		else retVal = val end
 	end
-    
+
   if useWhiteText then c = {1,1,1,1}; end
 
 	return retVal, c

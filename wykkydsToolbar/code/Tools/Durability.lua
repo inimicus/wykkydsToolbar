@@ -6,19 +6,19 @@ _addon.Feature.Toolbar.GetDurability = function()
 	local useCommas = _addon:GetOrDefault( true, _addon.Settings["durability_commas"])
   local useWhiteText = _addon:GetOrDefault( false, _addon.Settings["white_text"] )
 	local toolScale = _addon:GetOrDefault( 100, _addon.Settings["scale"]) / 100
-	
+
 	local cc, nc = {1,1,.76,1}, {1,1,.76,.5}
 	local cost = 0; for eslot = 0, GetBagSize(0), 1 do cost = cost + GetItemRepairCost(0, eslot); end
-	if cost == 0 then cost = "~"; cc=nc; else 
+	if cost == 0 then cost = "~"; cc=nc; else
 		if useCommas then cost = _addon:comma_value(cost) end
-		cost = cost.." g" 
+		cost = cost.." g"
 	end
-	
+
 	if useIcon then
 		local o = wykkydsToolbar.Tools[_addon.G.BAR_DURABILITY].Control
-		if o.Icon == nil then 
-			o.Icon = _addon.Feature.Toolbar.MakeSpacerControl( o ); 
-			o.Icon:SetTexture( ico ) 
+		if o.Icon == nil then
+			o.Icon = _addon.Feature.Toolbar.MakeSpacerControl( o );
+			o.Icon:SetTexture( ico )
 		end
 		o.IconSize = 24
 		o.BufferSize = 22 * toolScale
@@ -48,7 +48,7 @@ _addon.Feature.Toolbar.GetDurability = function()
 		end
 		o.UseIcon = false
 	end
-    
+
   if useWhiteText then cc = {1,1,1,1}; end
 
 	return cost, cc

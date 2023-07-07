@@ -4,7 +4,7 @@ local weaponMeterWidth = 90
 
 _addon._DefaultLabelColor = "|c7FA292"
 
-_addon.Feature.Toolbar.MakeSpacerControl = function(o)	
+_addon.Feature.Toolbar.MakeSpacerControl = function(o)
 	return _addon.Frames.__NewImage("wykkydsToolbar_Spacer", o)
 		:SetTexture(nil)
 		:SetDimensions( 12 * ( _addon:GetOrDefault( 100, _addon.Settings["scale"]) / 100 ), 12 * ( _addon:GetOrDefault( 100, _addon.Settings["scale"]) / 100 ) )
@@ -35,10 +35,10 @@ end
 
 _addon.Feature.Toolbar.MakeToolbar = function(o)
 	local key = o:GetName()
-	
+
 	local spacerSetting = _addon:GetOrDefault( "Dot", _addon.Settings["spacer_style"])
 	local spacerTexture
-	
+
 	if spacerSetting == "Dot" then
 		spacerTexture = "/esoui/art/buttons/checkbox_mouseover.dds"
 	elseif spacerSetting == "Box" then
@@ -54,9 +54,9 @@ _addon.Feature.Toolbar.MakeToolbar = function(o)
 	else
 		spacerTexture = "/wykkydsToolbar/textures/blank.dds"
 	end
-	
+
 	if _addon:GetOrDefault( false, _addon.Settings["white_text"] ) then _addon._DefaultLabelColor = "|cFFFFFF" end
-	
+
 	for k,t in pairs(o.Tools) do
 		if not o.Tools[k].Control then o.Tools[k].Control = _addon.Feature.Toolbar.MakeToolControl(o, key.."_"..t.Name, t.Name) end
 	end
@@ -114,7 +114,7 @@ end
 _addon.Feature.Toolbar.Redraw = function()
 	local key = "wykkydsToolbar"
 	local o = _G[key]
-	
+
 	if o == nil then
 		_addon.Feature.Toolbar.Create()
 		return
@@ -391,9 +391,9 @@ _addon.Feature.Toolbar.Create = function()
 	local groupTimers =  _addon:GetOrDefault( true, _addon.Settings["timerGroup"])
 	local hideHorse = _addon:GetOrDefault( false, _addon.Settings["horse_trainFull"])
 	local horseComplete = _addon.Feature.Toolbar.horseTrainingComplete()
-	local hideWorldXP = _addon:GetOrDefault( false, _addon.Settings["world_xp_autohide"])	
+	local hideWorldXP = _addon:GetOrDefault( false, _addon.Settings["world_xp_autohide"])
 	local indexWorldXP = _addon.Feature.Toolbar.SpecialWorldIndex()
-	
+
 	table.insert(_addon.G.BAR_TOOLS, { Tool = _addon.G.BAR_TOOL_TIME, 	Method = _addon.Feature.Toolbar.GetTime })
 	table.insert(_addon.G.BAR_TOOLS, { Tool = _addon.G.BAR_TOOL_FPS, 	Method = _addon.Feature.Toolbar.GetFramesPerSecond })
 	table.insert(_addon.G.BAR_TOOLS, { Tool = _addon.G.BAR_PINGRATE, 	Method = _addon.Feature.Toolbar.GetLatency })
@@ -414,17 +414,17 @@ _addon.Feature.Toolbar.Create = function()
 	end
 	table.insert(_addon.G.BAR_TOOLS, { Tool = _addon.G.BAR_TOOL_BACKPACK, 	Method = _addon.Feature.Toolbar.GetBackpackDetails })
 	table.insert(_addon.G.BAR_TOOLS, { Tool = _addon.G.BAR_TOOL_BANK, 	Method = _addon.Feature.Toolbar.GetBankDetails })
-	
+
 	table.insert(_addon.G.BAR_TOOLS, { Tool = _addon.G.BAR_TOOL_AP, 	Method = _addon.Feature.Toolbar.GetAP })
 	table.insert(_addon.G.BAR_TOOLS, { Tool = _addon.G.BAR_TOOL_CROWNS, 	Method = _addon.Feature.Toolbar.GetCrowns })
-	table.insert(_addon.G.BAR_TOOLS, { Tool = _addon.G.BAR_TOOL_CROWN_GEMS, 	Method = _addon.Feature.Toolbar.GetCrownGems })	
+	table.insert(_addon.G.BAR_TOOLS, { Tool = _addon.G.BAR_TOOL_CROWN_GEMS, 	Method = _addon.Feature.Toolbar.GetCrownGems })
 	table.insert(_addon.G.BAR_TOOLS, { Tool = _addon.G.BAR_TOOL_EVENT_TICKETS, 	Method = _addon.Feature.Toolbar.GetEventTickets })
 	table.insert(_addon.G.BAR_TOOLS, { Tool = _addon.G.BAR_TOOL_GOLD, 	Method = _addon.Feature.Toolbar.GetMoney })
 	table.insert(_addon.G.BAR_TOOLS, { Tool = _addon.G.BAR_TOOL_GEMS, 	Method = _addon.Feature.Toolbar.GetSoulGems })
-	table.insert(_addon.G.BAR_TOOLS, { Tool = _addon.G.BAR_TOOL_TELVAR, 	Method = _addon.Feature.Toolbar.GetTelVar })	
+	table.insert(_addon.G.BAR_TOOLS, { Tool = _addon.G.BAR_TOOL_TELVAR, 	Method = _addon.Feature.Toolbar.GetTelVar })
 	table.insert(_addon.G.BAR_TOOLS, { Tool = _addon.G.BAR_TOOL_XMUTE, 	Method = _addon.Feature.Toolbar.GetXMute })
 	table.insert(_addon.G.BAR_TOOLS, { Tool = _addon.G.BAR_TOOL_WRITS, 	Method = _addon.Feature.Toolbar.GetWrits })
-	
+
 	table.insert(_addon.G.BAR_TOOLS, { Tool = _addon.G.BAR_DURABILITY, 	Method = _addon.Feature.Toolbar.GetDurability })
 	table.insert(_addon.G.BAR_TOOLS, { Tool = _addon.G.BAR_WEAPONCHARGE,Method = _addon.Feature.Toolbar.GetWeaponCharge })
 	if groupTimers then
@@ -435,7 +435,7 @@ _addon.Feature.Toolbar.Create = function()
 	table.insert(_addon.G.BAR_TOOLS, { Tool = _addon.G.BAR_TOOL_SMITH, 	Method = _addon.Feature.Toolbar.GetSmith })
 	table.insert(_addon.G.BAR_TOOLS, { Tool = _addon.G.BAR_TOOL_WOOD, 	Method = _addon.Feature.Toolbar.GetWood })
 	table.insert(_addon.G.BAR_TOOLS, { Tool = _addon.G.BAR_TOOL_CLOTH, 	Method = _addon.Feature.Toolbar.GetCloth })
-	table.insert(_addon.G.BAR_TOOLS, { Tool = _addon.G.BAR_TOOL_JEWEL,  Method = _addon.Feature.Toolbar.GetJewel })	
+	table.insert(_addon.G.BAR_TOOLS, { Tool = _addon.G.BAR_TOOL_JEWEL,  Method = _addon.Feature.Toolbar.GetJewel })
 
 	local key = "wykkydsToolbar"
 	local o = _G[key]
@@ -505,10 +505,10 @@ _addon.Feature.Toolbar.Create = function()
 		[_addon.G.BAR_TOOL_WRITS] = { Name = "writs_mode", Control = nil },
 		[_addon.G.BAR_TOOL_XMUTE] = { Name = "xmute_setting", Control = nil },
 		[_addon.G.BAR_TOOL_EVENT_TICKETS] = { Name = "eventtickets_setting", Control = nil },
-		[_addon.G.BAR_TOOL_TELVAR] = { Name = "telvar_mode", Control = nil },		
+		[_addon.G.BAR_TOOL_TELVAR] = { Name = "telvar_mode", Control = nil },
 		[_addon.G.BAR_TOOL_AP] = { Name = "ap_setting", Control = nil },
-		[_addon.G.BAR_TOOL_CROWNS] = { Name = "crowns_setting", Control = nil },		
-		[_addon.G.BAR_TOOL_CROWN_GEMS] = { Name = "crowngems_mode", Control = nil },		
+		[_addon.G.BAR_TOOL_CROWNS] = { Name = "crowns_setting", Control = nil },
+		[_addon.G.BAR_TOOL_CROWN_GEMS] = { Name = "crowngems_mode", Control = nil },
 		[_addon.G.BAR_TOOL_XP] = { Name = "xpvp_enabled", Control = nil },
 		[_addon.G.BAR_TOOL_XPBar] = { Name = "xp_bar_enabled", Control = nil },
 		--[_addon.G.BAR_TOOL_SpecialWorldXPBar] = { Name = "creature_xp_bar_enabled", Control = nil },
@@ -530,16 +530,16 @@ _addon.Feature.Toolbar.Create = function()
 	if not (hideWorldXP and indexWorldXP == 0) then
 		o.Tools[_addon.G.BAR_TOOL_SpecialWorldXPBar] = { Name = "creature_xp_bar_enabled", Control = nil }
 	end
-		
+
 	o.UpdateAll = function() updateAll() end
 	BumpCompass(true)
-	
+
 	if _addon:GetOrDefault(true, _addon.Settings["hide_in_dialog"]) then
 		local fragment = ZO_HUDFadeSceneFragment:New(o, nil, 0)
 		HUD_SCENE:AddFragment(fragment)
 		HUD_UI_SCENE:AddFragment(fragment)
 	end
-	
+
 	_addon.Feature.Toolbar.MakeToolbar(o)
 end
 

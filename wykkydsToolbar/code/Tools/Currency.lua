@@ -59,7 +59,7 @@ _addon.Feature.Toolbar.GetCurrency = function(currencyType, currencyLocation, ic
 
 	local val, c, title = GetCurrencyAmount(currencyType, currencyLocation), {1,1,.76,1}, ""
 	local retVal = ""
-	
+
 	if useCommas then
 		retVal = _addon:comma_value(val)
 	else
@@ -75,7 +75,7 @@ _addon.Feature.Toolbar.GetCurrency = function(currencyType, currencyLocation, ic
 		local eventMax = 12
 		c = _addon.Feature.Toolbar.ThresholdColor(val, eventWarn, eventMax)
 	end
-	
+
 	if currencyType == CURT_CHAOTIC_CREATIA then
 		local xmuteMode = _addon:GetOrDefault( true, _addon.Settings["xmute_mode"])
 		local xmuteWarn = tonumber(_addon:GetOrDefault( 25, _addon.Settings["xmute_warn"]))
@@ -88,13 +88,13 @@ _addon.Feature.Toolbar.GetCurrency = function(currencyType, currencyLocation, ic
 	local o = wykkydsToolbar.Tools[toolType].Control
 	if identifier == "Title" then
 		if o.Icon ~= nil then o.Icon:SetHidden(true) end
-		title = _addon._DefaultLabelColor .. toolTitle .. ":|r " 
+		title = _addon._DefaultLabelColor .. toolTitle .. ":|r "
 	elseif identifier == "Icon" then
-		if o.Icon == nil then 
-			o.Icon = _addon.Feature.Toolbar.MakeSpacerControl( o ); 
-			o.Icon:SetTexture(iconTexture) 
+		if o.Icon == nil then
+			o.Icon = _addon.Feature.Toolbar.MakeSpacerControl( o );
+			o.Icon:SetTexture(iconTexture)
 		end
-		o.IconSize = 17			
+		o.IconSize = 17
 		o.BufferSize = 22 * toolScale
 		if not o.UseIcon then
 			o.Icon:SetDimensions( o.IconSize, o.IconSize )
@@ -121,7 +121,7 @@ _addon.Feature.Toolbar.GetCurrency = function(currencyType, currencyLocation, ic
 		end
 		o.UseIcon = false
 	end
-    
+
 	if useWhiteText then c = {1,1,1,1}; end
 	return title .. retVal, c
 end

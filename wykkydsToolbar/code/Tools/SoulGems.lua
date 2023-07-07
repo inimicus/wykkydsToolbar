@@ -9,10 +9,10 @@ _addon.Feature.Toolbar.GetSoulGems = function()
     local name, icon, icon2, stackCount = "", "", "", 0
     local myLevel = GetUnitEffectiveLevel("player")
     local emptyCount, fullCount = 0, 0
-    
+
     local fullColor = "00FF00"
     if useWhiteText then fullColor = "FFFFFF"; end
-    
+
     name, icon, stackCount = GetSoulGemInfo(SOUL_GEM_TYPE_EMPTY, myLevel, true); emptyCount = stackCount;
     name, icon2, stackCount = GetSoulGemInfo(SOUL_GEM_TYPE_FILLED, myLevel, true); fullCount = stackCount;
     if style == "Empty / Full" then retVal = emptyCount .. " / ".. "|c"..fullColor..fullCount.."|r"
@@ -52,7 +52,7 @@ _addon.Feature.Toolbar.GetSoulGems = function()
         end
         o.UseIcon = false
     end
-    
+
     if useWhiteText then c = {1,1,1,1}; end
 
     return retVal, c

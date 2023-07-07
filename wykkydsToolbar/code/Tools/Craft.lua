@@ -13,7 +13,7 @@ _addon.Feature.Toolbar.GetCloth = function()
 end
 _addon.Feature.Toolbar.GetJewel = function()
 	return _addon.Feature.Toolbar.GetCraftingValue("rt_jewel", _addon.G.BAR_TOOL_JEWEL, CRAFTING_TYPE_JEWELRYCRAFTING, "/esoui/art/icons/icon_jewelrycrafting_symbol.dds")
-end 
+end
 
 
 _addon.Feature.Toolbar.GetCraftingValue = function(name, toolId, craftType, craftIconPath)
@@ -34,14 +34,14 @@ _addon.Feature.Toolbar.GetCraftingValue = function(name, toolId, craftType, craf
 		secsLeft = secsMinLeft
 		secsTotal = secsMinTotal
 	end
-	
+
 	local percentDone = 100
 	if secsTotal > 0 then percentDone = math.floor(100 * (secsLeft/secsTotal)) end
 
 	local r, g, b = _addon:GetColorScale_RedGreenPowerMeter(secsLeft, secsTotal, true)
 	local c = { r, g, b, 1 }
 
-	if not doShow then 
+	if not doShow then
 		return result, c;
 	end
 	if secsLeft == nil or secsTotal == nil then
@@ -89,7 +89,7 @@ _addon.Feature.Toolbar.GetCraftingValue = function(name, toolId, craftType, craf
 		if     hn > 0 then result = hh .. " " .. _addon.G.BAR_STR_HOURS
 		elseif mn > 0 then result = mm .. " " .. _addon.G.BAR_STR_MINUTES
 		elseif sn > 0 then result = ss .. " " .. _addon.G.BAR_STR_SECONDS
-		else               result = _addon.G.BAR_STR_STUDY_DONE	
+		else               result = _addon.G.BAR_STR_STUDY_DONE
 		end
 	elseif timerStyles == _addon.G.BAR_STR_COUNTDOWN then
 		result = timeForHuman
@@ -136,7 +136,7 @@ _addon.Feature.Toolbar.GetCraftingValue = function(name, toolId, craftType, craf
 		end
 		o.UseIcon = false
 	end
-    
+
   if useWhiteText then c = {1,1,1,1}; end
 
 	return result, c

@@ -8,7 +8,7 @@ _addon.Feature.Toolbar.GetSpecialWorldXPBar = function()
 		return 0, _addon._DefaultLabelColor .. "Human:|r ", 1;
 	end
 	worldSkillName, worldSkillLevel = GetSkillLineInfo(SKILL_TYPE_WORLD, skillIndex)
-		
+
 	local oldxp, xplvl, xp = GetSkillLineXPInfo(SKILL_TYPE_WORLD, skillIndex)
 	if xp == nil or xplvl == nil or oldxp == nil then return 0, _addon._DefaultLabelColor .. "Human:|r ", 1; end
 	xp = xp - oldxp

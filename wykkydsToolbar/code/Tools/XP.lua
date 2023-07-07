@@ -12,7 +12,7 @@ _addon.Feature.Toolbar.GetXP = function()
 
     if IsUnitChampion('player') then
 		-- > Level 50
-		
+
 		rank = GetPlayerChampionPointsEarned()
 		xp, xplvl, title = GetPlayerChampionXP(), GetNumChampionXPInChampionPoint(rank), _addon._DefaultLabelColor .. "CXP:|r "
 		-- GetUnitChampionPoints()
@@ -26,12 +26,12 @@ _addon.Feature.Toolbar.GetXP = function()
     end
 
 	-- Hmm ... Show Enlightenment?
-    
-    if useWhiteText then 
+
+    if useWhiteText then
     	c = {1,1,1,1}
     	xpColor = "FFFFFF"
     end
-	
+
     if xplvl == nil or tonumber(xplvl) == 0 then return _addon._DefaultLabelColor .. "Max Level|r", c; end
     if not useTitle then title = "" end
     if setting == "Earned / Total" then
@@ -52,6 +52,6 @@ _addon.Feature.Toolbar.GetXP = function()
         else return title ..(xplvl - xp).." Needed", c; end
     end
     if setting == "Needed %" then return title .._addon:Round(((xplvl - xp)/xplvl)*100,0).."% Needed", c; end
-    
+
     return "", c
 end
