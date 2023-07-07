@@ -2,6 +2,8 @@
 ## Title: Wykkyd Toolbar |c8866003.2.7.1|r
 ## Description: |ca0a0a0This addon provides a small collection of features.|r
 ## Author: |c4EFFF6Calia1120|r & |cFF2222Demiknight|r
+## Version: 3.2.7.0
+## AddOnVersion: 3020700
 ## DependsOn: LibAddonMenu-2.0
 ## OptionalDependsOn: wykkyd_core_libraries LibWykkydFactory4
 ## SavedVariables: wykkydsToolbarGlobal
