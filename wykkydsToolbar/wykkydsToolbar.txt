@@ -26,6 +26,7 @@ code/tools/xpbar.lua
 code/tools/zone.lua
 code/tools/durability.lua
 code/tools/weaponcharge.lua
+code/tools/vampire.lua
 code/toolbar.lua
 
 bindings.xml

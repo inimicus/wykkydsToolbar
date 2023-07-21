@@ -149,6 +149,7 @@ _addon.LoadSavedVariables = function( self )
 	setDefault( "rt_timer_type", _addon.G.BAR_STR_TIME_TO_NEXT_FREE )
 	setDefault( "rt_slots", _addon.G.BAR_STR_OFF )
 	setDefault( "timerGroup", true )
+	setDefault( "vampire_enabled", true )
 end
 
 _addon.LoadSettingsMenu = function( self )
@@ -288,6 +289,12 @@ _addon.LoadSettingsMenu = function( self )
 				[11] = self:MakeStandardOption( self.Settings, _addon.G.BAR_STR_TIMER_TARGET, "rt_timer_type", _addon.G.BAR_STR_TIME_TO_NEXT_FREE, "dropdown", { choices={_addon.G.BAR_STR_TIME_TO_NEXT_FREE,_addon.G.BAR_STR_TIME_TO_ALL_FREE},default=_addon.G.BAR_STR_TIME_TO_NEXT_FREE, } ),
 				[12] = self:MakeStandardOption( self.Settings, _addon.G.BAR_STR_SLOTS, "rt_slots", _addon.G.BAR_STR_OFF, "dropdown", { choices={_addon.G.BAR_STR_OFF,_addon.G.BAR_STR_SLOTS_TOTAL,_addon.G.BAR_STR_SLOTS_USED,_addon.G.BAR_STR_SLOTS_FREE,_addon.G.BAR_STR_SLOTS_USED_TOTAL,_addon.G.BAR_STR_SLOTS_FREE_TOTAL},default=_addon.G.BAR_STR_OFF, } ),
 				[13] = self:MakeStandardOption( self.Settings, "Group all toolbar timers", "timerGroup", true, "checkbox", { tooltip="When set this option will move the Horse Training timer to group with the Research Timers.", warning="Reloads UI when changed", default=true, } ),
+			},
+		},
+		[20] = { type = "submenu", name = "|cCAB222".."Vampirism".."|r",
+			controls = {
+				[1] = self:MakeStandardOption( self.Settings, "Show Vampire Stage Timer", "vampire_enabled", true, "checkbox", { default=true, } ),
+				[2] = self:MakeStandardOption( self.Settings, "Show Vampire Icon", "vampire_icon", true, "checkbox", { default=true, } ),
 			},
 		},
 	}

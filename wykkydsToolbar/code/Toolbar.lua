@@ -338,6 +338,32 @@ local updateAll = function()
 			else
 				hideSpacer( wykkydsToolbar.Tools[t.Tool].Spacer )
 			end
+		elseif t.Tool == _addon.G.BAR_TOOL_VAMPIRE then
+			local txt, c = t.Method()
+            local isVampire = GetPlayerCurseType() == CURSE_TYPE_VAMPIRE
+			if wykkydsToolbar.Tools[t.Tool].Control ~= nil then
+                if isVampire then
+                    wykkydsToolbar.Tools[t.Tool].Control:SetText(txt)
+                    wykkydsToolbar.Tools[t.Tool].Control:SetColor(c[1],c[2],c[3],c[4])
+                    wykkydsToolbar.Tools[t.Tool].Control:SetHidden( false )
+                else
+                    wykkydsToolbar.Tools[t.Tool].Control:SetHidden(true)
+                end
+				if _addon.TSetting(t.Tool) ~= nil and _addon.TSetting(t.Tool) ~= false and _addon.TSetting(t.Tool) ~= "Off" then
+					if wykkydsToolbar.Tools[t.Tool].Spacer ~= nil then sCount = sCount + 1
+						wykkydsToolbar.Tools[t.Tool].Spacer:SetHidden( false )
+						w = w + wykkydsToolbar.Tools[t.Tool].Spacer:GetWidth() + iPad;
+					end
+					w = w + wykkydsToolbar.Tools[t.Tool].Control:GetWidth() + iPad; tCount = tCount + 1
+					if wykkydsToolbar.Tools[t.Tool].Control.UseIcon then
+						w = w + ( wykkydsToolbar.Tools[t.Tool].Control.BufferSize );
+					end
+				else
+					hideSpacer( wykkydsToolbar.Tools[t.Tool].Spacer )
+				end
+			else
+				hideSpacer( wykkydsToolbar.Tools[t.Tool].Spacer )
+			end
 		elseif t.Tool == _addon.G.BAR_WEAPONCHARGE then
 			local pcts = multiSplit( t.Method() or "999#999#999#999" )
 			if wykkydsToolbar.Tools[t.Tool].Control ~= nil then
@@ -427,6 +453,7 @@ _addon.Feature.Toolbar.Create = function()
 
 	table.insert(_addon.G.BAR_TOOLS, { Tool = _addon.G.BAR_DURABILITY, 	Method = _addon.Feature.Toolbar.GetDurability })
 	table.insert(_addon.G.BAR_TOOLS, { Tool = _addon.G.BAR_WEAPONCHARGE,Method = _addon.Feature.Toolbar.GetWeaponCharge })
+    table.insert(_addon.G.BAR_TOOLS, { Tool = _addon.G.BAR_TOOL_VAMPIRE,Method = _addon.Feature.Toolbar.GetVampire })
 	if groupTimers then
 		if not (hideHorse and horseComplete) then
 			table.insert(_addon.G.BAR_TOOLS, { Tool = _addon.G.BAR_TOOL_HORSE, 	Method = _addon.Feature.Toolbar.GetHorse })
@@ -524,6 +551,7 @@ _addon.Feature.Toolbar.Create = function()
 		[_addon.G.BAR_TOOL_CLOTH] = { Name = "rt_clothing", Control = nil },
 		[_addon.G.BAR_DURABILITY] = { Name = "durability_enabled", Control = nil },
 		[_addon.G.BAR_WEAPONCHARGE] = { Name = "weaponcharge_enabled", Control = nil },
+		[_addon.G.BAR_TOOL_VAMPIRE] = { Name = "vampire_enabled", Control = nil },
 	}
 
 	--Demiknight: Need to only add this bar if turned on otherwise the bar appears in the middle of the screen.
