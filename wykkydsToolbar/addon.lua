@@ -12,13 +12,15 @@ _addon._v.major		= 3
 _addon._v.monthly 	= 2
 _addon._v.daily 	= 7
 _addon._v.minor 	= 0
+_addon._v.revision 	= 2
 _addon.Version 	= _addon._v.major
 	..".".._addon._v.monthly
 	..".".._addon._v.daily
 	..".".._addon._v.minor
+	.."r".._addon._v.revision
 _addon.Name			= "wykkydsToolbar"
 _addon.MAJOR 		= _addon.Name..".".._addon._v.major
-_addon.MINOR 		= string.format(".%02d%02d%03d", _addon._v.monthly, _addon._v.daily, _addon._v.minor)
+_addon.MINOR 		= string.format(".%02d%02d%03dr%02d", _addon._v.monthly, _addon._v.daily, _addon._v.minor, _addon._v.revision)
 _addon.DisplayName  = "Wykkyd Toolbar"
 _addon.SavedVariableVersion = 4
 _addon.Player = "" -- will be set on load by LibWykkkydFactory
